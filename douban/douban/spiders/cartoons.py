@@ -56,10 +56,7 @@ class DoubanCartoonSubject(Spider):
                 url = '='.join(url)
                 yield Request(url)
             else:
-                # with open('subjects.txt', 'w+', encoding='utf-8') as f:
-                #     f.write(json.dumps(list(self.subject_set)))
                 self.logger.warning('没有数据：{}'.format(url))
-                # self.logger.warning(len(self.subject_set))
         else:
             self.logger.error(response.url)
             self.logger.error('状态码为：{}'.format(response.status))

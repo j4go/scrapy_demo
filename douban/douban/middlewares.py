@@ -3,13 +3,11 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-import scrapy
-import base64
 from scrapy import signals
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 from scrapy.downloadermiddlewares.httpproxy import HttpProxyMiddleware
 import random
-from .settings import IPPOOL
+from .settings import IPPOOL, PROXY
 
 
 class DoubanSpiderMiddleware(object):
@@ -60,12 +58,8 @@ class DoubanSpiderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-
-
 class MyUserAgentMiddleware(UserAgentMiddleware):
-    '''
-    设置User-Agent
-    '''
+    """设置User-Agent"""
 
     def __init__(self, user_agent):
         self.user_agent = user_agent
@@ -94,6 +88,5 @@ class IPPOOLS(HttpProxyMiddleware):
 class IPProxy(HttpProxyMiddleware):
 
     def process_request(self, request, spider):
-        proxy = "http://1b2983d3368f5af8:d68183588598522c@dongtai.xieyaoyun.com:33002"
         # print('正在使用代理: {}'.format(proxy))
-        request.meta['proxy'] = proxy
+        request.meta['proxy'] = PROXY

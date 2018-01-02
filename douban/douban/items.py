@@ -4,6 +4,7 @@
 
 from scrapy import Item, Field
 
+
 class DoubanItem(Item):
     name = Field()
     year = Field()
@@ -29,4 +30,3 @@ class DoubanMovieTop250Item(Item):
     top_num = Field()
     detail_url = Field()
     movie_intro = Field()
-
