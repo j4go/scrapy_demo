@@ -16,10 +16,9 @@ class Rakuten(Spider):
         # self.with_com_item_count = {}
         self.url_list = [
             'https://review.rakuten.co.jp/item/1/332002_10005375/1.1/', # 测试评论
-
         ]
 
-    name = 'rr'
+    name = 'rakuten_item_comment'
 
     def start_requests(self):
         self.logger.warning("rakuten start_requests请求入口")
