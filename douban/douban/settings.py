@@ -7,6 +7,7 @@
 # http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 # http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
+import os
 import json
 import traceback
 
@@ -98,7 +99,7 @@ DEFAULT_REQUEST_HEADERS = {
 # AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
-# http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
+# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 # HTTPCACHE_ENABLED = True
 # HTTPCACHE_EXPIRATION_SECS = 0
 # HTTPCACHE_DIR = 'httpcache'
@@ -166,7 +167,8 @@ IPPOOL = [
 PROXY = "http://1b2983d3368f5af8:d68183588598522c@dongtai.xieyaoyun.com:33002"
 
 # 从文件读取user_agent
-MY_USER_AGENT = [line.strip('\n') for line in open('user_agent.txt')]
+file_path = os.path.join(os.path.dirname(__file__), 'user_agent.txt')
+MY_USER_AGENT = [line.strip('\n') for line in open(file_path)]
 
 if __name__ == '__main__':
     print(MY_USER_AGENT)
